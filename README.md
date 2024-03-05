@@ -23,3 +23,11 @@ Antes de ejecutar el bot, debes configurar tus credenciales de Instagram en el a
 
 USERNAME = 'tu_nombre_de_usuario'
 PASSWORD = 'tu_contraseña'
+```
+
+## Ejecución
+
+```
+python main.py
+
+```
