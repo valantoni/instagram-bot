@@ -16,6 +16,8 @@ PASSWORD = os.getenv("PASSWORD")
 MAX_TIME_LOAD = 20
 MIN_TIME_LOAD = 2
 
+SIMILAR_ACCOUNT = "tonydevpy"
+
 xpath = {
    "decline_cookies": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]",
     "save_login_not_now_button": "//div[contains(text(), 'Ahora no')]",
@@ -63,15 +65,13 @@ class InstaFollower:
         save_login_prompt = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
             EC.presence_of_element_located((By.XPATH, xpath["save_login_not_now_button"]))
         )
-        if save_login_prompt:
-            save_login_prompt.click()
+        save_login_prompt.click()
 
         # Click "not now" on notifications prompt
         notifications_prompt = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
             EC.presence_of_element_located((By.XPATH, xpath["notification_not_now_button"]))
         )
-        if notifications_prompt:
-            notifications_prompt.click()
+        notifications_prompt.click()
         
     def like_to_post(self):
         self.driver.get(xpath["post"])
@@ -80,12 +80,10 @@ class InstaFollower:
         like_button = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
         EC.element_to_be_clickable((By.XPATH, xpath["like_button"]))
         )
-        if like_button:
-            like_button.click()
-            print("Like dado")
+        like_button.click()
+        print("Like dado")
     
     def find_followers(self):
-        SIMILAR_ACCOUNT = "tonydevpy"
         WebDriverWait(self.driver, MIN_TIME_LOAD)
 
         # Show followers of the selected account. 
