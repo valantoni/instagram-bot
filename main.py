@@ -9,8 +9,7 @@ import os
 
 load_dotenv()
 
-#USERNAME = os.getenv("USERNAME")
-USERNAME = "jelp.m"
+USERNAME = os.getenv("USERNAME")
 PASSWORD = os.getenv("PASSWORD")
 MAX_TIME_LOAD = 20
 MIN_TIME_LOAD = 2
@@ -40,6 +39,9 @@ class InstaFollower:
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=chrome_options)
+
+    def close_browser(self):
+        self.driver.close()
 
     def login(self):
         self.driver.get(urls["login"])
@@ -121,4 +123,5 @@ class InstaFollower:
 
 bot = InstaFollower()
 bot.login()
-bot.find_followers("librofertas_")
+bot.find_followers("leomessi")
+bot.close_browser()
