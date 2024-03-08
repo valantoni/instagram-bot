@@ -9,12 +9,11 @@ import os
 
 load_dotenv()
 
-USERNAME = os.getenv("USERNAME")
+#USERNAME = os.getenv("USERNAME")
+USERNAME = "jelp.m"
 PASSWORD = os.getenv("PASSWORD")
 MAX_TIME_LOAD = 20
 MIN_TIME_LOAD = 2
-
-SIMILAR_ACCOUNT = "tonydevpy"
 
 xpath = {
    "decline_cookies": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]",
@@ -63,18 +62,24 @@ class InstaFollower:
         WebDriverWait(self.driver, MIN_TIME_LOAD)
         password.send_keys(Keys.ENTER)
 
-        # Click "Not now" and ignore Save-login info prompt
-        save_login_prompt = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
-            EC.presence_of_element_located((By.XPATH, xpath["save_login_not_now_button"]))
-        )
-        save_login_prompt.click()
+        try:
+            # Click "Not now" and ignore Save-login info prompt
+            save_login_prompt = WebDriverWait(self.driver, MIN_TIME_LOAD).until(
+                EC.presence_of_element_located((By.XPATH, xpath["save_login_not_now_button"]))
+            )
+            save_login_prompt.click()
+        except:
+            pass
 
-        # Click "not now" on notifications prompt
-        notifications_prompt = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
-            EC.presence_of_element_located((By.XPATH, xpath["notification_not_now_button"]))
-        )
-        notifications_prompt.click()
-        
+        try:
+            # Click "not now" on notifications prompt
+            notifications_prompt = WebDriverWait(self.driver, MIN_TIME_LOAD).until(
+                EC.presence_of_element_located((By.XPATH, xpath["notification_not_now_button"]))
+            )
+            notifications_prompt.click()
+        except:
+            pass
+
     def like_to_post(self):
         self.driver.get(xpath["post"])
 
@@ -85,11 +90,11 @@ class InstaFollower:
         like_button.click()
         print("Like dado")
     
-    def find_followers(self):
+    def find_followers(self, account_name):
         WebDriverWait(self.driver, MIN_TIME_LOAD)
 
         # Show followers of the selected account. 
-        self.driver.get(f"https://www.instagram.com/{SIMILAR_ACCOUNT}/followers/")
+        self.driver.get(f"https://www.instagram.com/{account_name}/followers/")
 
         # The xpath of the modal that shows the followers will change over time. Update yours accordingly.
         modal = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
@@ -116,3 +121,4 @@ class InstaFollower:
 
 bot = InstaFollower()
 bot.login()
+bot.find_followers("librofertas_")
