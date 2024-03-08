@@ -27,6 +27,10 @@ xpath = {
     "cancel_unfollow_button": "//button[contains(text(), 'Cancel')]",
 }
 
+css_selector = {
+    "follows_buttons": "._aano button"
+}
+
 urls = {
     "login": "https://www.instagram.com/accounts/login/",
     "post": "https://www.instagram.com/p/CzZQt6BIsck/"
@@ -100,7 +104,7 @@ class InstaFollower:
 
     def follow(self):
         # Check and update the (CSS) Selector for the "Follow" buttons as required. 
-        all_buttons = self.driver.find_elements(By.CSS_SELECTOR, value='._aano button')
+        all_buttons = self.driver.find_elements(By.CSS_SELECTOR, value=css_selector["follows_buttons"])
 
         for button in all_buttons:
             try:
