@@ -46,7 +46,7 @@ class InstaFollower:
         self.driver.get(urls["login"])
 
         try:
-            cookie_warning = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
+            cookie_warning = WebDriverWait(self.driver, MIN_TIME_LOAD).until(
                 EC.presence_of_element_located((By.XPATH, xpath["decline_cookies"]))
             )
             # Dismiss the cookie warning by clicking an element or button
