@@ -45,14 +45,14 @@ class InstaFollower:
     def login(self):
         self.driver.get(urls["login"])
 
-        cookie_warning = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
-            EC.presence_of_element_located((By.XPATH, xpath["decline_cookies"]))
-        )
-
-        # Check if the cookie warning is present on the page
-        if cookie_warning:
+        try:
+            cookie_warning = WebDriverWait(self.driver, MAX_TIME_LOAD).until(
+                EC.presence_of_element_located((By.XPATH, xpath["decline_cookies"]))
+            )
             # Dismiss the cookie warning by clicking an element or button
             cookie_warning[0].click()
+        except:
+            pass
 
         username = self.driver.find_element(by=By.NAME, value="username")
         password = self.driver.find_element(by=By.NAME, value="password")
