@@ -97,7 +97,8 @@ class InstaFollower:
         )
         for i in range(10):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-            time.sleep(2)  
+            WebDriverWait(self.driver, MIN_TIME_LOAD)
+  
 
     def follow(self):
         # Check and update the (CSS) Selector for the "Follow" buttons as required. 
