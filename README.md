@@ -4,15 +4,22 @@ Este proyecto es un bot de Instagram desarrollado en Python que automatiza ciert
 
 ## Descripción
 
-El bot utiliza la libreria de Selenium para interactuar con la plataforma. Puede realizar diversas tareas, como seguir usuarios, dar "me gusta" a publicaciones ...
+El bot utiliza la librería de Selenium para interactuar con la plataforma. Puede realizar diversas tareas, como seguir usuarios, dar "me gusta" a publicaciones...
 
 ## Instalación
 
 1. Clona este repositorio en tu máquina local:
 
+```bash
+git clone https://github.com/valantoni/instagram-bot.git
+cd instagram-bot
+```
 
 2. Instala las dependencias del proyecto:
 
+```bash
+pip install -r requirements.txt
+```
 
 ## Configuración
 
@@ -27,7 +34,6 @@ PASSWORD = 'tu_contraseña'
 
 ## Ejecución
 
-```
+```bash
 python main.py
-
 ```
